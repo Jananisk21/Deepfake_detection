@@ -1,0 +1,226 @@
+{
+  "clean": {
+    "n_samples": 4,
+    "accuracy": 0.5,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "auc": 0.0,
+    "roc_curve": {
+      "fpr": [
+        0.0,
+        0.5,
+        1.0,
+        1.0
+      ],
+      "tpr": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    "confusion_matrix": [
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        0
+      ]
+    ]
+  },
+  "jpeg_q30": {
+    "n_samples": 4,
+    "accuracy": 0.5,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "auc": 1.0,
+    "roc_curve": {
+      "fpr": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "tpr": [
+        0.0,
+        0.5,
+        1.0,
+        1.0
+      ]
+    },
+    "confusion_matrix": [
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        0
+      ]
+    ]
+  },
+  "resize_0.5x": {
+    "n_samples": 4,
+    "accuracy": 0.5,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "auc": 1.0,
+    "roc_curve": {
+      "fpr": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "tpr": [
+        0.0,
+        0.5,
+        1.0,
+        1.0
+      ]
+    },
+    "confusion_matrix": [
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        0
+      ]
+    ]
+  },
+  "gaussian_blur_k5": {
+    "n_samples": 4,
+    "accuracy": 0.5,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "auc": 1.0,
+    "roc_curve": {
+      "fpr": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "tpr": [
+        0.0,
+        0.5,
+        1.0,
+        1.0
+      ]
+    },
+    "confusion_matrix": [
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        0
+      ]
+    ]
+  },
+  "brightness_+30%": {
+    "n_samples": 4,
+    "accuracy": 0.5,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "auc": 0.5,
+    "roc_curve": {
+      "fpr": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "tpr": [
+        0.0,
+        0.5,
+        0.5,
+        1.0
+      ]
+    },
+    "confusion_matrix": [
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        0
+      ]
+    ]
+  },
+  "gaussian_noise_s12": {
+    "n_samples": 4,
+    "accuracy": 0.5,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "auc": 0.5,
+    "roc_curve": {
+      "fpr": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "tpr": [
+        0.0,
+        0.5,
+        0.5,
+        1.0
+      ]
+    },
+    "confusion_matrix": [
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        0
+      ]
+    ]
+  },
+  "re_encoding_x2": {
+    "n_samples": 4,
+    "accuracy": 0.5,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "auc": 1.0,
+    "roc_curve": {
+      "fpr": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "tpr": [
+        0.0,
+        0.5,
+        1.0,
+        1.0
+      ]
+    },
+    "confusion_matrix": [
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        0
+      ]
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+video_path,label,dataset,method,source_ids
+data/raw/synthetic_ffpp/original_sequences/youtube/c23/videos/000.mp4,0,ffpp,real,000
+data/raw/synthetic_ffpp/original_sequences/youtube/c23/videos/001.mp4,0,ffpp,real,001
+data/raw/synthetic_ffpp/original_sequences/youtube/c23/videos/008.mp4,0,ffpp,real,008
+data/raw/synthetic_ffpp/original_sequences/youtube/c23/videos/009.mp4,0,ffpp,real,009
+data/raw/synthetic_ffpp/manipulated_sequences/DeepFakes/c23/videos/000_001.mp4,1,ffpp,DeepFakes,000;001
+data/raw/synthetic_ffpp/manipulated_sequences/DeepFakes/c23/videos/008_009.mp4,1,ffpp,DeepFakes,008;009
+data/raw/synthetic_ffpp/manipulated_sequences/Face2Face/c23/videos/000_001.mp4,1,ffpp,Face2Face,000;001
+data/raw/synthetic_ffpp/manipulated_sequences/Face2Face/c23/videos/008_009.mp4,1,ffpp,Face2Face,008;009

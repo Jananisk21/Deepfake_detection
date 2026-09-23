@@ -1,0 +1,21 @@
+2026-09-02 17:37:17 | INFO    | train | Device: cpu
+2026-09-02 17:37:17 | INFO    | train | Run config: {'train_dir': 'data/processed/train', 'val_dir': 'data/processed/val', 'run_name': 'baseline_rgb', 'epochs': 8, 'batch_size': 4, 'lr': 0.0001, 'weight_decay': 1e-05, 'optimizer': 'adamw', 'scheduler': 'cosine', 'early_stopping_patience': 8, 'num_workers': 0, 'seed': 42, 'branch_mode': 'spatial_only', 'fusion_type': 'gated', 'spatial_backbone': 'mobilenet_v3_small', 'no_pretrained': True, 'no_class_weights': False, 'grad_clip': 1.0, 'cpu': True}
+2026-09-02 17:37:17 | INFO    | train | Train videos: 16 | Val videos: 8
+2026-09-02 17:37:17 | INFO    | train | Model params: 1,387,938 total, 1,249,186 trainable
+2026-09-02 17:37:17 | INFO    | train | Class weights: real=0.800 fake=1.333 -> pos_weight=1.667
+2026-09-02 17:37:20 | INFO    | train | Epoch 001/8 | train_loss=0.8750 train_acc=0.4375 | val_loss=0.9231 val_acc=0.5000 | 2.6s elapsed
+2026-09-02 17:37:20 | INFO    | train |   -> new best model saved (val_loss=0.9231) to /home/claude/deepfake_detection/outputs/checkpoints/baseline_rgb_best.pt
+2026-09-02 17:37:22 | INFO    | train | Epoch 002/8 | train_loss=0.8484 train_acc=0.6875 | val_loss=0.9229 val_acc=0.5000 | 5.3s elapsed
+2026-09-02 17:37:22 | INFO    | train |   -> new best model saved (val_loss=0.9229) to /home/claude/deepfake_detection/outputs/checkpoints/baseline_rgb_best.pt
+2026-09-02 17:37:25 | INFO    | train | Epoch 003/8 | train_loss=0.8569 train_acc=0.6875 | val_loss=0.9228 val_acc=0.5000 | 7.9s elapsed
+2026-09-02 17:37:25 | INFO    | train |   -> new best model saved (val_loss=0.9228) to /home/claude/deepfake_detection/outputs/checkpoints/baseline_rgb_best.pt
+2026-09-02 17:37:28 | INFO    | train | Epoch 004/8 | train_loss=0.8380 train_acc=0.8125 | val_loss=0.9229 val_acc=0.5000 | 10.7s elapsed
+2026-09-02 17:37:30 | INFO    | train | Epoch 005/8 | train_loss=0.8317 train_acc=0.9375 | val_loss=0.9228 val_acc=0.5000 | 13.4s elapsed
+2026-09-02 17:37:30 | INFO    | train |   -> new best model saved (val_loss=0.9228) to /home/claude/deepfake_detection/outputs/checkpoints/baseline_rgb_best.pt
+2026-09-02 17:37:33 | INFO    | train | Epoch 006/8 | train_loss=0.8314 train_acc=0.7500 | val_loss=0.9227 val_acc=0.5000 | 16.0s elapsed
+2026-09-02 17:37:33 | INFO    | train |   -> new best model saved (val_loss=0.9227) to /home/claude/deepfake_detection/outputs/checkpoints/baseline_rgb_best.pt
+2026-09-02 17:37:35 | INFO    | train | Epoch 007/8 | train_loss=0.8075 train_acc=0.9375 | val_loss=0.9226 val_acc=0.5000 | 18.6s elapsed
+2026-09-02 17:37:35 | INFO    | train |   -> new best model saved (val_loss=0.9226) to /home/claude/deepfake_detection/outputs/checkpoints/baseline_rgb_best.pt
+2026-09-02 17:37:38 | INFO    | train | Epoch 008/8 | train_loss=0.7935 train_acc=1.0000 | val_loss=0.9225 val_acc=0.5000 | 21.2s elapsed
+2026-09-02 17:37:38 | INFO    | train |   -> new best model saved (val_loss=0.9225) to /home/claude/deepfake_detection/outputs/checkpoints/baseline_rgb_best.pt
+2026-09-02 17:37:38 | INFO    | train | Training finished. Best val_loss=0.9225. History saved.

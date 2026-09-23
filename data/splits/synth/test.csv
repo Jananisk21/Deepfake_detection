@@ -1,0 +1,5 @@
+video_path,label,dataset,method,source_ids
+data/raw/synthetic_ffpp/original_sequences/youtube/c23/videos/002.mp4,0,ffpp,real,002
+data/raw/synthetic_ffpp/original_sequences/youtube/c23/videos/003.mp4,0,ffpp,real,003
+data/raw/synthetic_ffpp/manipulated_sequences/DeepFakes/c23/videos/002_003.mp4,1,ffpp,DeepFakes,002;003
+data/raw/synthetic_ffpp/manipulated_sequences/Face2Face/c23/videos/002_003.mp4,1,ffpp,Face2Face,002;003

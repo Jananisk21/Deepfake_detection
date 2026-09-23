@@ -1,0 +1,22 @@
+2026-09-02 17:38:19 | INFO    | train | Device: cpu
+2026-09-02 17:38:19 | INFO    | train | Run config: {'train_dir': 'data/processed/train', 'val_dir': 'data/processed/val', 'run_name': 'dual_gated', 'epochs': 8, 'batch_size': 4, 'lr': 0.0001, 'weight_decay': 1e-05, 'optimizer': 'adamw', 'scheduler': 'cosine', 'early_stopping_patience': 8, 'num_workers': 0, 'seed': 42, 'branch_mode': 'dual', 'fusion_type': 'gated', 'spatial_backbone': 'mobilenet_v3_small', 'no_pretrained': True, 'no_class_weights': False, 'grad_clip': 1.0, 'cpu': True}
+2026-09-02 17:38:19 | INFO    | train | Train videos: 16 | Val videos: 8
+2026-09-02 17:38:19 | INFO    | train | Model params: 1,631,674 total, 1,492,922 trainable
+2026-09-02 17:38:19 | INFO    | train | Class weights: real=0.800 fake=1.333 -> pos_weight=1.667
+2026-09-02 17:38:22 | INFO    | train | Epoch 001/8 | train_loss=0.8709 train_acc=0.6250 | val_loss=0.9496 val_acc=0.5000 | 3.4s elapsed
+2026-09-02 17:38:22 | INFO    | train |   -> new best model saved (val_loss=0.9496) to /home/claude/deepfake_detection/outputs/checkpoints/dual_gated_best.pt
+2026-09-02 17:38:25 | INFO    | train | Epoch 002/8 | train_loss=0.8639 train_acc=0.6250 | val_loss=0.9488 val_acc=0.5000 | 6.7s elapsed
+2026-09-02 17:38:26 | INFO    | train |   -> new best model saved (val_loss=0.9488) to /home/claude/deepfake_detection/outputs/checkpoints/dual_gated_best.pt
+2026-09-02 17:38:29 | INFO    | train | Epoch 003/8 | train_loss=0.8556 train_acc=0.6250 | val_loss=0.9476 val_acc=0.5000 | 9.8s elapsed
+2026-09-02 17:38:29 | INFO    | train |   -> new best model saved (val_loss=0.9476) to /home/claude/deepfake_detection/outputs/checkpoints/dual_gated_best.pt
+2026-09-02 17:38:32 | INFO    | train | Epoch 004/8 | train_loss=0.8376 train_acc=0.7500 | val_loss=0.9463 val_acc=0.5000 | 12.8s elapsed
+2026-09-02 17:38:32 | INFO    | train |   -> new best model saved (val_loss=0.9463) to /home/claude/deepfake_detection/outputs/checkpoints/dual_gated_best.pt
+2026-09-02 17:38:35 | INFO    | train | Epoch 005/8 | train_loss=0.8349 train_acc=0.6875 | val_loss=0.9453 val_acc=0.5000 | 15.9s elapsed
+2026-09-02 17:38:35 | INFO    | train |   -> new best model saved (val_loss=0.9453) to /home/claude/deepfake_detection/outputs/checkpoints/dual_gated_best.pt
+2026-09-02 17:38:38 | INFO    | train | Epoch 006/8 | train_loss=0.8136 train_acc=1.0000 | val_loss=0.9445 val_acc=0.5000 | 19.0s elapsed
+2026-09-02 17:38:38 | INFO    | train |   -> new best model saved (val_loss=0.9445) to /home/claude/deepfake_detection/outputs/checkpoints/dual_gated_best.pt
+2026-09-02 17:38:41 | INFO    | train | Epoch 007/8 | train_loss=0.8297 train_acc=0.8125 | val_loss=0.9439 val_acc=0.5000 | 22.1s elapsed
+2026-09-02 17:38:41 | INFO    | train |   -> new best model saved (val_loss=0.9439) to /home/claude/deepfake_detection/outputs/checkpoints/dual_gated_best.pt
+2026-09-02 17:38:44 | INFO    | train | Epoch 008/8 | train_loss=0.8379 train_acc=0.6875 | val_loss=0.9434 val_acc=0.5000 | 25.1s elapsed
+2026-09-02 17:38:44 | INFO    | train |   -> new best model saved (val_loss=0.9434) to /home/claude/deepfake_detection/outputs/checkpoints/dual_gated_best.pt
+2026-09-02 17:38:44 | INFO    | train | Training finished. Best val_loss=0.9434. History saved.

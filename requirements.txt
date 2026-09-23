@@ -1,0 +1,38 @@
+# Core deep learning
+torch>=2.2.0,<2.3.0
+torchvision>=0.17.0,<0.18.0
+
+# Computer vision / face detection / frequency processing
+opencv-python>=4.8.0
+facenet-pytorch>=2.5.3     # MTCNN face detector (bundled pretrained weights, no separate download needed)
+
+# Data & metrics
+numpy>=1.24.0,<2.0.0        # pinned <2.0 for opencv/facenet-pytorch compatibility
+scikit-learn>=1.3.0
+pandas>=2.0.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Web app
+streamlit>=1.30.0
+
+# Utilities
+tqdm>=4.65.0
+
+# ---------------------------------------------------------------------------
+# Installation notes:
+#   pip install -r requirements.txt
+#
+# If you have an NVIDIA GPU and want CUDA acceleration, install the CUDA
+# build of torch/torchvision FIRST from https://pytorch.org/get-started/locally/
+# (pick your CUDA version), then run this requirements.txt -- pip will skip
+# reinstalling torch/torchvision if a compatible version is already present.
+#
+# CPU-only (default, works on any machine, used throughout this project's
+# own testing) needs no extra step -- the versions above install a CPU
+# build automatically on a machine with no CUDA driver detected by pip's
+# platform tags, or you can force it explicitly with:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+# ---------------------------------------------------------------------------

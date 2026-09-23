@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+*.egg-info/
+
+# Data (large, license-gated, and machine-specific -- never commit raw/processed video)
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+data/splits/*.csv
+!data/splits/.gitkeep
+
+# Trained artifacts (large binary; regenerate via training/train.py)
+outputs/checkpoints/*.pt
+!outputs/checkpoints/.gitkeep
+
+# OS / editor
+.DS_Store
+.vscode/
+*.swp
+
+# Streamlit
+.streamlit/
