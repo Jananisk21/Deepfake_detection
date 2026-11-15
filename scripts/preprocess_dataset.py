@@ -34,9 +34,10 @@ def main():
     ap.add_argument("--image_size", type=int, default=CFG_DATA.image_size)
     ap.add_argument("--freq_type", default=CFG_DATA.freq_type, choices=["fft", "dct"])
     ap.add_argument("--face_detector", default=CFG_DATA.face_detector, choices=["mtcnn", "haar"])
+    ap.add_argument("--out_dir", default=None, help="Custom output directory (e.g. data/processed/ffpp/train). Defaults to data/processed/<split>")
     args = ap.parse_args()
 
-    out_dir = os.path.join(PROCESSED_DIR, args.split)
+    out_dir = args.out_dir or os.path.join(PROCESSED_DIR, args.split)
     os.makedirs(out_dir, exist_ok=True)
 
     with open(args.manifest, newline="") as f:
@@ -46,10 +47,15 @@ def main():
 
     detector = build_face_detector(args.face_detector)
 
+    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     t0 = time.time()
     n_ok, n_fail = 0, 0
     for i, row in enumerate(rows):
         video_path = row["video_path"]
+        if not os.path.isabs(video_path) and not os.path.exists(video_path):
+            alt_path = os.path.join(project_root, video_path)
+            if os.path.exists(alt_path):
+                video_path = alt_path
         label = int(row["label"])
         video_id = f"{row['dataset']}_{row['method']}_{os.path.splitext(os.path.basename(video_path))[0]}_{i}"
         try:

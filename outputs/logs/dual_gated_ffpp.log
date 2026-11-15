@@ -1,0 +1,39 @@
+2026-11-15 22:33:30 | INFO    | train | Device: cpu
+2026-11-15 22:33:30 | INFO    | train | Run config: {'train_dir': 'data/processed/ffpp/train', 'val_dir': 'data/processed/ffpp/val', 'run_name': 'dual_gated_ffpp', 'epochs': 15, 'batch_size': 8, 'lr': 0.0001, 'weight_decay': 1e-05, 'optimizer': 'adamw', 'scheduler': 'cosine', 'early_stopping_patience': 5, 'num_workers': 0, 'seed': 42, 'branch_mode': 'dual', 'fusion_type': 'gated', 'spatial_backbone': 'mobilenet_v3_small', 'no_pretrained': False, 'no_class_weights': False, 'grad_clip': 1.0, 'cpu': False}
+2026-11-15 22:33:30 | INFO    | train | Train videos: 72 | Val videos: 16
+2026-11-15 22:33:30 | INFO    | train | Model params: 1,631,674 total, 1,492,922 trainable
+2026-11-15 22:33:30 | INFO    | train | Class weights: real=1.000 fake=1.000 -> pos_weight=1.000
+2026-11-15 22:33:50 | INFO    | train | Epoch 001/15 | train_loss=0.6981 train_acc=0.5000 | val_loss=0.6956 val_acc=0.5000 | 19.6s elapsed
+2026-11-15 22:33:50 | INFO    | train |   -> new best model saved (val_loss=0.6956) to C:\Users\DELL\OneDrive\Documents\SixProjects_Manasi\deepfake_detection_project\deepfake_detection\outputs\checkpoints\dual_gated_ffpp_best.pt
+2026-11-15 22:34:16 | INFO    | train | Epoch 002/15 | train_loss=0.6887 train_acc=0.5278 | val_loss=0.6937 val_acc=0.5000 | 45.2s elapsed
+2026-11-15 22:34:16 | INFO    | train |   -> new best model saved (val_loss=0.6937) to C:\Users\DELL\OneDrive\Documents\SixProjects_Manasi\deepfake_detection_project\deepfake_detection\outputs\checkpoints\dual_gated_ffpp_best.pt
+2026-11-15 22:34:41 | INFO    | train | Epoch 003/15 | train_loss=0.6838 train_acc=0.6389 | val_loss=0.6925 val_acc=0.5625 | 70.1s elapsed
+2026-11-15 22:34:41 | INFO    | train |   -> new best model saved (val_loss=0.6925) to C:\Users\DELL\OneDrive\Documents\SixProjects_Manasi\deepfake_detection_project\deepfake_detection\outputs\checkpoints\dual_gated_ffpp_best.pt
+2026-11-15 22:35:03 | INFO    | train | Epoch 004/15 | train_loss=0.6787 train_acc=0.7222 | val_loss=0.6952 val_acc=0.5000 | 92.9s elapsed
+2026-11-15 22:35:26 | INFO    | train | Epoch 005/15 | train_loss=0.6813 train_acc=0.5833 | val_loss=0.7015 val_acc=0.5000 | 115.7s elapsed
+2026-11-15 22:35:49 | INFO    | train | Epoch 006/15 | train_loss=0.6700 train_acc=0.6944 | val_loss=0.7051 val_acc=0.5000 | 138.5s elapsed
+2026-11-15 22:36:14 | INFO    | train | Epoch 007/15 | train_loss=0.6537 train_acc=0.7778 | val_loss=0.7059 val_acc=0.5000 | 163.2s elapsed
+2026-11-15 22:36:38 | INFO    | train | Epoch 008/15 | train_loss=0.6415 train_acc=0.8194 | val_loss=0.6977 val_acc=0.5000 | 187.5s elapsed
+2026-11-15 22:36:38 | INFO    | train | Early stopping at epoch 8 (no val improvement for 5 epochs).
+2026-11-15 22:36:38 | INFO    | train | Training finished. Best val_loss=0.6925. History saved.
+2026-11-15 22:40:06 | INFO    | train | Device: cpu
+2026-11-15 22:40:06 | INFO    | train | Run config: {'train_dir': 'data/processed/ffpp/train', 'val_dir': 'data/processed/ffpp/val', 'run_name': 'dual_gated_ffpp', 'epochs': 20, 'batch_size': 8, 'lr': 0.0005, 'weight_decay': 1e-05, 'optimizer': 'adamw', 'scheduler': 'cosine', 'early_stopping_patience': 10, 'num_workers': 0, 'seed': 42, 'branch_mode': 'dual', 'fusion_type': 'gated', 'spatial_backbone': 'mobilenet_v3_small', 'no_pretrained': False, 'no_class_weights': False, 'grad_clip': 1.0, 'cpu': False}
+2026-11-15 22:40:06 | INFO    | train | Train videos: 72 | Val videos: 16
+2026-11-15 22:40:06 | INFO    | train | Model params: 1,631,674 total, 1,492,922 trainable
+2026-11-15 22:40:06 | INFO    | train | Class weights: real=1.000 fake=1.000 -> pos_weight=1.000
+2026-11-15 22:40:26 | INFO    | train | Epoch 001/20 | train_loss=0.7034 train_acc=0.4722 | val_loss=0.6942 val_acc=0.5000 | 19.6s elapsed
+2026-11-15 22:40:26 | INFO    | train |   -> new best model saved (val_loss=0.6942) to C:\Users\DELL\OneDrive\Documents\SixProjects_Manasi\deepfake_detection_project\deepfake_detection\outputs\checkpoints\dual_gated_ffpp_best.pt
+2026-11-15 22:40:48 | INFO    | train | Epoch 002/20 | train_loss=0.6811 train_acc=0.5417 | val_loss=0.6923 val_acc=0.5000 | 41.8s elapsed
+2026-11-15 22:40:48 | INFO    | train |   -> new best model saved (val_loss=0.6923) to C:\Users\DELL\OneDrive\Documents\SixProjects_Manasi\deepfake_detection_project\deepfake_detection\outputs\checkpoints\dual_gated_ffpp_best.pt
+2026-11-15 22:41:11 | INFO    | train | Epoch 003/20 | train_loss=0.6493 train_acc=0.6389 | val_loss=0.7217 val_acc=0.5000 | 65.2s elapsed
+2026-11-15 22:41:35 | INFO    | train | Epoch 004/20 | train_loss=0.5436 train_acc=0.8333 | val_loss=1.0125 val_acc=0.5000 | 88.9s elapsed
+2026-11-15 22:41:59 | INFO    | train | Epoch 005/20 | train_loss=0.4507 train_acc=0.8194 | val_loss=1.3585 val_acc=0.5000 | 112.7s elapsed
+2026-11-15 22:42:22 | INFO    | train | Epoch 006/20 | train_loss=0.2335 train_acc=0.9306 | val_loss=1.7406 val_acc=0.5000 | 135.8s elapsed
+2026-11-15 22:42:45 | INFO    | train | Epoch 007/20 | train_loss=0.1246 train_acc=0.9583 | val_loss=2.1206 val_acc=0.5000 | 158.8s elapsed
+2026-11-15 22:43:08 | INFO    | train | Epoch 008/20 | train_loss=0.2936 train_acc=0.8889 | val_loss=2.2664 val_acc=0.5000 | 181.3s elapsed
+2026-11-15 22:43:31 | INFO    | train | Epoch 009/20 | train_loss=0.0650 train_acc=0.9722 | val_loss=2.3185 val_acc=0.5000 | 204.6s elapsed
+2026-11-15 22:43:55 | INFO    | train | Epoch 010/20 | train_loss=0.0993 train_acc=0.9722 | val_loss=2.1668 val_acc=0.5000 | 228.8s elapsed
+2026-11-15 22:44:23 | INFO    | train | Epoch 011/20 | train_loss=0.0687 train_acc=0.9861 | val_loss=2.1000 val_acc=0.6250 | 257.3s elapsed
+2026-11-15 22:44:51 | INFO    | train | Epoch 012/20 | train_loss=0.0125 train_acc=1.0000 | val_loss=2.1350 val_acc=0.6250 | 284.8s elapsed
+2026-11-15 22:44:51 | INFO    | train | Early stopping at epoch 12 (no val improvement for 10 epochs).
+2026-11-15 22:44:51 | INFO    | train | Training finished. Best val_loss=0.6923. History saved.

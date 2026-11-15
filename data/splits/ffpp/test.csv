@@ -1,0 +1,13 @@
+video_path,label,dataset,method,source_ids
+data/raw/ffpp\original_sequences\youtube\c23\videos\035.mp4,0,ffpp,real,035
+data/raw/ffpp\original_sequences\youtube\c23\videos\036.mp4,0,ffpp,real,036
+data/raw/ffpp\original_sequences\youtube\c23\videos\159.mp4,0,ffpp,real,159
+data/raw/ffpp\original_sequences\youtube\c23\videos\175.mp4,0,ffpp,real,175
+data/raw/ffpp\original_sequences\youtube\c23\videos\917.mp4,0,ffpp,real,917
+data/raw/ffpp\original_sequences\youtube\c23\videos\924.mp4,0,ffpp,real,924
+data/raw/ffpp\manipulated_sequences\DeepFakes\c23\videos\035_036.mp4,1,ffpp,DeepFakes,035;036
+data/raw/ffpp\manipulated_sequences\DeepFakes\c23\videos\036_035.mp4,1,ffpp,DeepFakes,036;035
+data/raw/ffpp\manipulated_sequences\DeepFakes\c23\videos\159_175.mp4,1,ffpp,DeepFakes,159;175
+data/raw/ffpp\manipulated_sequences\DeepFakes\c23\videos\175_159.mp4,1,ffpp,DeepFakes,175;159
+data/raw/ffpp\manipulated_sequences\DeepFakes\c23\videos\917_924.mp4,1,ffpp,DeepFakes,917;924
+data/raw/ffpp\manipulated_sequences\DeepFakes\c23\videos\924_917.mp4,1,ffpp,DeepFakes,924;917
