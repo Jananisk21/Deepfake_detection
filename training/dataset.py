@@ -17,6 +17,7 @@ import glob
 import os
 from typing import List, Tuple
 
+import cv2
 import numpy as np
 import torch
 from torch.utils.data import DataLoader, Dataset
@@ -39,14 +40,33 @@ class DeepfakeVideoDataset(Dataset):
     def __len__(self) -> int:
         return len(self.files)
 
-    def _augment_video(self, rgb: np.ndarray) -> np.ndarray:
-        """rgb: (T, H, W, 3) in [0,1]. Applies the SAME transform to every frame."""
+    def _augment_video(self, rgb: np.ndarray, freq: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
+        """rgb: (T, H, W, 3) in [0,1], freq: (T, H, W) in [0,1].
+        Applies moderate, realistic augmentations to improve generalization
+        without destroying fine deepfake manipulation boundaries."""
+        # 1. Consistent horizontal flip (applied to both spatial and frequency representations)
         if self._rng.random() < 0.5:
-            rgb = rgb[:, :, ::-1, :].copy()  # horizontal flip
+            rgb = rgb[:, :, ::-1, :].copy()
+            freq = freq[:, :, ::-1].copy()
+
+        # 2. Moderate brightness scaling (+/- 10%)
         if self._rng.random() < 0.5:
-            factor = 1.0 + self._rng.uniform(-0.15, 0.15)
+            factor = 1.0 + self._rng.uniform(-0.10, 0.10)
             rgb = np.clip(rgb * factor, 0.0, 1.0)
-        return rgb
+
+        # 3. Mild realistic blur (3x3 gaussian blur, simulating natural camera focus/mild motion)
+        # Keeps kernel small (3x3) so fine manipulation artifacts are not washed out!
+        if self._rng.random() < 0.25:
+            for t in range(rgb.shape[0]):
+                rgb[t] = cv2.GaussianBlur(rgb[t], (3, 3), 0.5)
+
+        # 4. Mild sensor noise (sigma in [0.005, 0.015])
+        if self._rng.random() < 0.20:
+            sigma = self._rng.uniform(0.005, 0.015)
+            noise = self._rng.normal(0, sigma, rgb.shape).astype(np.float32)
+            rgb = np.clip(rgb + noise, 0.0, 1.0)
+
+        return rgb, freq
 
     def __getitem__(self, idx: int) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
         data = np.load(self.files[idx])
@@ -55,7 +75,7 @@ class DeepfakeVideoDataset(Dataset):
         label = float(data["label"])
 
         if self.augment:
-            rgb = self._augment_video(rgb)
+            rgb, freq = self._augment_video(rgb, freq)
 
         rgb = (rgb - IMAGENET_MEAN) / IMAGENET_STD
         rgb_t = torch.from_numpy(rgb).permute(0, 3, 1, 2).float()      # (T,3,H,W)

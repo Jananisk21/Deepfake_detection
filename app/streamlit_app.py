@@ -83,7 +83,8 @@ def main():
         st.header("Settings")
         checkpoints = list_checkpoints()
         options = ["(untrained demo model)"] + checkpoints
-        chosen = st.selectbox("Model checkpoint", options, index=len(options) - 1 if checkpoints else 0)
+        default_idx = options.index("dual_gated_ffpp_v2_best.pt") if "dual_gated_ffpp_v2_best.pt" in options else (len(options) - 1 if checkpoints else 0)
+        chosen = st.selectbox("Model checkpoint", options, index=default_idx)
         face_detector_kind = st.selectbox("Face detector", ["mtcnn", "haar"], index=0)
         num_frames = st.slider("Frames per video", 4, 16, CFG_DATA.frames_per_video)
         image_size = st.select_slider("Frame resolution", options=[112, 160, 224], value=CFG_DATA.image_size)
@@ -138,11 +139,16 @@ def main():
         with torch.no_grad():
             out = model(rgb_t, freq_t)
         video_prob = torch.sigmoid(out["logit"]).item()
-    label_str = "DEEPFAKE" if video_prob >= 0.5 else "REAL"
-    confidence = video_prob if video_prob >= 0.5 else 1 - video_prob
+    threshold = float(train_args.get("optimal_threshold", 0.50))
+    label_str = "DEEPFAKE" if video_prob >= threshold else "REAL"
+    if video_prob >= threshold:
+        confidence = 0.5 + 0.5 * min(1.0, max(0.0, (video_prob - threshold) / max(1e-5, (1.0 - threshold))))
+    else:
+        confidence = 0.5 + 0.5 * min(1.0, max(0.0, (threshold - video_prob) / max(1e-5, threshold)))
 
     st.header(f"Prediction: {'🟥' if label_str=='DEEPFAKE' else '🟩'} {label_str}")
     st.metric("Video-level confidence", f"{confidence*100:.1f}%")
+    st.caption(f"Predicted class: **{label_str}** | Raw fake probability: {video_prob*100:.1f}% | Calibrated decision threshold: {threshold*100:.1f}%")
     if checkpoint_path is None:
         st.caption("⚠️ Running with an UNTRAINED model -- this prediction is not meaningful. Train the model first (see README).")
 

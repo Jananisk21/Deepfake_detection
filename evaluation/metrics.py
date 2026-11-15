@@ -45,6 +45,15 @@ def compute_all_metrics(labels: np.ndarray, probs: np.ndarray, threshold: float 
 
     cm = confusion_matrix(labels, preds, labels=[0, 1])
     result["confusion_matrix"] = cm.tolist()  # [[TN, FP], [FN, TP]]
+    tn, fp = int(cm[0, 0]), int(cm[0, 1])
+    fn, tp = int(cm[1, 0]), int(cm[1, 1])
+    result["tn"] = tn
+    result["fp"] = fp
+    result["fn"] = fn
+    result["tp"] = tp
+    result["fpr"] = float(fp / (fp + tn)) if (fp + tn) > 0 else 0.0
+    result["fnr"] = float(fn / (fn + tp)) if (fn + tp) > 0 else 0.0
+    result["threshold"] = float(threshold)
     return result
 
 

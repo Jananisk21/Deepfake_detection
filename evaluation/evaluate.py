@@ -47,9 +47,13 @@ from training.validate import run_validation
 from utils.seed import get_device
 
 
-def load_model(checkpoint_path: str, device: torch.device) -> DualBranchDeepfakeDetector:
+def load_model(checkpoint_path: str, device: torch.device):
     ckpt = torch.load(checkpoint_path, map_location=device)
-    args = ckpt["args"]
+    args = dict(ckpt.get("args", {}))
+    args["optimal_threshold"] = ckpt.get("optimal_threshold", 0.5)
+    args["val_roc_auc"] = ckpt.get("val_roc_auc", None)
+    args["val_loss"] = ckpt.get("val_loss", None)
+    args["val_acc"] = ckpt.get("val_acc", None)
     model = DualBranchDeepfakeDetector(
         branch_mode=args.get("branch_mode", "dual"),
         fusion_type=args.get("fusion_type", "gated"),
@@ -127,20 +131,23 @@ def main():
     ap.add_argument("--test_dir", required=True)
     ap.add_argument("--run_name", default="eval")
     ap.add_argument("--batch_size", type=int, default=4)
+    ap.add_argument("--threshold", type=float, default=None, help="Decision threshold. Defaults to optimal_threshold stored in checkpoint (or 0.5).")
     ap.add_argument("--skip_frame_level", action="store_true", help="Frame-level eval re-runs the model once per frame; skip for speed on large test sets.")
     ap.add_argument("--cpu", action="store_true")
     args = ap.parse_args()
 
     device = get_device(force_cpu=args.cpu)
     model, train_args = load_model(args.checkpoint, device)
+    effective_thresh = args.threshold if args.threshold is not None else train_args.get("optimal_threshold", 0.5)
     print(f"Loaded checkpoint {args.checkpoint} (trained with args: {train_args})")
+    print(f"Using classification threshold: {effective_thresh:.3f}")
 
     test_ds = DeepfakeVideoDataset(args.test_dir, augment=False)
     test_loader = DataLoader(test_ds, batch_size=args.batch_size, shuffle=False, num_workers=0)
 
     # ---- video-level (native) evaluation ----
     video_result = run_validation(model, test_loader, device, criterion=None)
-    video_metrics = compute_all_metrics(video_result["labels"], video_result["probs"])
+    video_metrics = compute_all_metrics(video_result["labels"], video_result["probs"], threshold=effective_thresh)
     print("\n=== VIDEO-LEVEL metrics (native model output) ===")
     for k, v in video_metrics.items():
         if k not in ("roc_curve", "confusion_matrix"):
@@ -164,7 +171,7 @@ def main():
     # ---- frame-level evaluation (see module docstring for the caveat) ----
     if not args.skip_frame_level:
         frame_result = frame_level_eval(model, test_ds, device)
-        frame_metrics = compute_all_metrics(frame_result["labels"], frame_result["probs"])
+        frame_metrics = compute_all_metrics(frame_result["labels"], frame_result["probs"], threshold=effective_thresh)
         print("\n=== FRAME-LEVEL metrics (same model, single-frame sequences; NOT directly comparable to video-level) ===")
         for k, v in frame_metrics.items():
             if k not in ("roc_curve", "confusion_matrix"):

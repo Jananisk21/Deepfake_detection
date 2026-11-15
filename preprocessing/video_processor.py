@@ -30,6 +30,7 @@ from preprocessing.face_detector import (
     BaseFaceDetector,
     center_crop_fallback,
     detect_and_crop,
+    track_and_crop_sequence,
 )
 from preprocessing.frequency_transform import rgb_to_frequency_map
 
@@ -93,14 +94,15 @@ def process_video(
     if len(raw_frames) == 0:
         return None
 
+    cropped_faces, n_faces = track_and_crop_sequence(
+        detector=detector,
+        frames=raw_frames,
+        margin=face_margin,
+        target_size=(image_size, image_size),
+    )
+
     rgb_out, freq_out = [], []
-    n_faces = 0
-    for frame in raw_frames:
-        face = detect_and_crop(detector, frame, margin=face_margin, target_size=(image_size, image_size))
-        if face is None:
-            face = center_crop_fallback(frame, target_size=(image_size, image_size))
-        else:
-            n_faces += 1
+    for face in cropped_faces:
         freq_map = rgb_to_frequency_map(face, freq_type=freq_type, size=freq_size, log_scale=log_scale_fft)
         rgb_out.append(face.astype(np.float32) / 255.0)
         freq_out.append(freq_map)
