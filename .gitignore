@@ -16,6 +16,7 @@ data/splits/*.csv
 # Trained artifacts (large binary; regenerate via training/train.py)
 outputs/checkpoints/*.pt
 !outputs/checkpoints/.gitkeep
+!outputs/checkpoints/dual_gated_ffpp_v2_best.pt
 
 # OS / editor
 .DS_Store

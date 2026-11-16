@@ -72,12 +72,6 @@ def to_model_tensors(rgb_frames: np.ndarray, freq_frames: np.ndarray, device):
 
 def main():
     st.title("🎬 Frequency-Aware Explainable Deepfake Video Detector")
-    st.caption(
-        "Dual-branch (RGB + FFT/DCT) deep network with adaptive fusion and Grad-CAM-based "
-        "branch-attributable explainability. Built as a final-year project based on the review "
-        "paper *\"Frequency-Aware Explainable Deepfake Video Detection Using Dual-Branch Deep "
-        "Neural Networks: A Review\"*."
-    )
 
     with st.sidebar:
         st.header("Settings")
@@ -252,7 +246,8 @@ def main():
             "temporal modeling in single-frame evaluation protocols."
         )
 
-    os.unlink(video_path)
+    if os.path.exists(video_path):
+        os.unlink(video_path)
 
 
 if __name__ == "__main__":

@@ -103,6 +103,11 @@ def frequency_gradcam(model, rgb_1frame: torch.Tensor, freq_1frame: torch.Tensor
 
 def overlay_heatmap(image_rgb_uint8: np.ndarray, heatmap: np.ndarray, alpha: float = 0.45) -> np.ndarray:
     """Overlays a [0,1] heatmap onto an RGB uint8 image using the 'jet' colormap."""
+    if image_rgb_uint8.dtype != np.uint8:
+        if image_rgb_uint8.max() <= 1.0:
+            image_rgb_uint8 = np.uint8(np.clip(image_rgb_uint8 * 255.0, 0, 255))
+        else:
+            image_rgb_uint8 = np.uint8(np.clip(image_rgb_uint8, 0, 255))
     heatmap_uint8 = np.uint8(255 * heatmap)
     heatmap_color = cv2.applyColorMap(heatmap_uint8, cv2.COLORMAP_JET)
     heatmap_color = cv2.cvtColor(heatmap_color, cv2.COLOR_BGR2RGB)
